@@ -1,0 +1,51 @@
+$backgroundEntriesList: #fff;
+$borderColorEntriesList: #e0e0e0;
+
+.entries {
+  width: 100%;
+  margin-top: 1rem;
+
+  &__list {
+    position: relative;
+    border: 1px solid $borderColorEntriesList;
+    border-bottom: none;
+    border-bottom-left-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    background: $backgroundEntriesList;
+
+    // arrow
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      content: "";
+      border-style: solid;
+      border-color: transparent;
+    }
+
+    &::before {
+      top: -2.2rem;
+      left: 2.9rem;
+      border-width: 1.1rem;
+      border-bottom-color: $borderColorEntriesList;
+    }
+
+    &::after {
+      top: -2rem;
+      left: 3rem;
+      border-width: 1rem;
+      border-bottom-color: $backgroundEntriesList;
+    }
+  }
+
+  &__item {
+    border-bottom: 1px solid $borderColorEntriesList;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,47 @@
+.entry {
+  display: flex;
+  padding: 1rem 0;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background-color: #3b71a9;
+
+    .entry__name,
+    .entry__description {
+      color: #fff;
+    }
+  }
+
+  &__preview {
+    flex-shrink: 0;
+    min-height: 4rem;
+    width: 8rem;
+
+    &__img {
+      // Part 1: Set a maximum relative to the parent
+      max-width: 100%;
+      max-height: 100%;
+
+      // Part 2: Scale the height according to the width, otherwise you get stretching
+      height: auto;
+    }
+  }
+
+  &__content {
+    padding: 0 1rem;
+  }
+
+  &__name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #333333;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: gray;
+  }
+}

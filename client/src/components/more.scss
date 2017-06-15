@@ -1,0 +1,65 @@
+$backgroundColorMore: #e0e0e0;
+
+// generate inverted border-radius
+// set $position as pair directions, e.g 'left bottom'
+@mixin inverted-border-radius($position: left top, $color: $backgroundColorMore, $size: 1rem) {
+  //defaults
+  $xPos: 100%; // left
+  $yPos: 100%; // top
+
+  @if index($position, "right") {
+    $xPos: 0;
+  }
+
+  @if index($position, "bottom") {
+    $yPos: 0;
+  }
+
+  background-image: radial-gradient(circle at $xPos $yPos, transparent $size, currentColor ($size + 0.1));
+  color: $color;
+}
+
+.more {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0 0 1rem 1rem;
+  background-color: $backgroundColorMore;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 0;
+  color: #333;
+  outline: none;
+
+  // curly borders
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+  }
+
+  // iverted border-radius
+  &:before {
+    left: -1rem;
+
+    @include inverted-border-radius(right top);
+  }
+
+  &:after {
+    right: -1rem;
+
+    @include inverted-border-radius(left top);
+  }
+
+  &:hover {
+    color: #bf1e2d;
+  }
+}

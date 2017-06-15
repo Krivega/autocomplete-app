@@ -1,0 +1,9 @@
+.app {
+  display: flex;
+  justify-content: center;
+
+  &__inner {
+    width: 100%;
+    max-width: 46rem;
+  }
+}
