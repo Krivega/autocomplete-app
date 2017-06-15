@@ -61,7 +61,3 @@ export function loadMore(state, limit) {
     limit
   }));
 }
-
-export function selectEntry(state, id) {
-  return state.set('selectedEntryId', id);
-}

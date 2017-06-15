@@ -3,7 +3,6 @@ import {
   updateEntriesData,
   setFilter,
   loadMore,
-  selectEntry,
   INITIAL_STATE
 } from './reducers';
 import actionTypes from './action-types';
@@ -18,8 +17,6 @@ export default function(state = INITIAL_STATE, action) {
       return setFilter(state, action.filter, action.limit);
     case actionTypes.LOAD_MORE:
       return loadMore(state, action.limit);
-    case actionTypes.SELECT_ENTRY:
-      return selectEntry(state, action.id);
   }
 
   return state;

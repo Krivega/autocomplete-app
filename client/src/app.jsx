@@ -1,15 +1,8 @@
 import React from 'react';
-import Filter from './containers/filter';
-import EntriesList from './containers/entries-list';
-import styles from './app.scss';
+import Autocomplete from './containers/autocomplete';
 
 const App = () => (
-  <div className={styles.app}>
-     <div className={styles.app__inner}>
-       <Filter />
-       <EntriesList />
-     </div>
-  </div>
+  <Autocomplete />
 );
 
 export default App;

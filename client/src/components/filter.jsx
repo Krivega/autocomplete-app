@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './filter.scss';
 
-class Filter extends React.Component {
+class Filter extends React.PureComponent {
   constructor(props) {
     super(props);
 

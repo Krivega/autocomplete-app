@@ -36,10 +36,3 @@ export const loadMore = (limit = DEFAULT_LIMIT) => {
     }
   };
 };
-
-export const selectEntry = (id) => {
-  return {
-    type: actionTypes.SELECT_ENTRY,
-    id
-  };
-};

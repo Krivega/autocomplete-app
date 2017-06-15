@@ -11,7 +11,7 @@ class EntryItem extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.onSelect(this.props.id);
+    this.props.onSelect(this.props.name);
   }
 
   render() {
@@ -30,7 +30,6 @@ class EntryItem extends React.Component {
 };
 
 EntryItem.propTypes = {
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
