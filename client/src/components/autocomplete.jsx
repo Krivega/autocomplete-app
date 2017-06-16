@@ -27,7 +27,6 @@ class Autocomplete extends React.Component {
   }
 
   render() {
-      console.log("Autocomplete render");
     return (
       <div className={styles.autocomplete}>
         <div className={styles.autocomplete__inner}>
