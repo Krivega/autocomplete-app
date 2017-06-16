@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './entry-item.scss';
 
-class EntryItem extends React.Component {
+class EntryItem extends React.PureComponent {
   constructor(props) {
     super(props);
 

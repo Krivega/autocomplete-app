@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './more.scss';
 
-class More extends React.Component {
+class More extends React.PureComponent {
   constructor(props) {
     super(props);
 
