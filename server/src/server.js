@@ -1,18 +1,15 @@
-import Server from 'socket.io';
-import {getEntries} from './reducers';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import entries from './routes/entries';
 
 export default function startServer(store) {
-  const io = new Server().attach(8090);
+  const app = express();
 
-  io.on('connection', (socket) => {
-    socket.on('action', (action) => {
-        if (action.type === 'SET_FILTER') {
-            socket.emit('setEntries', getEntries(store.getState(), action.filter, action.limit, action.offset));
-        } else if ( action.type === 'LOAD_MORE') {
-            socket.emit('addEntries', getEntries(store.getState(), action.filter, action.limit, action.offset));
-        } else {
-            store.dispatch(action);
-        }
-    });
-  });
+  app.use(cors());
+  app.use(bodyParser.json());
+
+  app.use('/api/entries', entries(store));
+
+  return app;
 }

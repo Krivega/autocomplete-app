@@ -11,6 +11,7 @@ class Filter extends React.PureComponent {
     };
 
     this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -21,16 +22,16 @@ class Filter extends React.PureComponent {
       this.setState({
         value
       });
-      this.props.onChange({
-        value
-      });
+      this.props.onChange(value);
     }
   }
 
   handleFocus(event) {
-    this.props.onFocus({
-      value: event.target.value
-    });
+    this.props.onFocus(event.target.value);
+  }
+
+  handleBlur(event) {
+    this.props.onBlur(event.target.value);
   }
 
   handleChange(event) {
@@ -38,9 +39,7 @@ class Filter extends React.PureComponent {
     this.setState({
       value
     });
-    this.props.onChange({
-      value
-    });
+    this.props.onChange(value);
   }
 
   render() {
@@ -51,6 +50,7 @@ class Filter extends React.PureComponent {
           value={this.state.value}
           type="text"
           onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onChange={this.handleChange}
         />
       </div>
@@ -61,7 +61,8 @@ class Filter extends React.PureComponent {
 Filter.propTypes = {
   name: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired
+  onFocus: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired
 };
 
 export default Filter;

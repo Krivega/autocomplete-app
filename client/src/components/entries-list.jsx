@@ -28,8 +28,12 @@ class EntriesList extends React.Component {
     );
   }
 
+  hasShow() {
+    return this.props.entries.length !== 0 && this.props.show;
+  }
+
   render() {
-    if (this.props.entries.length === 0) {
+    if (!this.hasShow()) {
       return null;
     }
 
@@ -52,6 +56,7 @@ EntriesList.propTypes = {
     preview: PropTypes.string.isRequired
   })).isRequired,
   more: PropTypes.bool,
+  show: PropTypes.bool,
   onMoreClick: PropTypes.func.isRequired,
   onSelectItem: PropTypes.func.isRequired
 };

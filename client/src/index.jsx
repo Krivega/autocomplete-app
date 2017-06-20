@@ -1,20 +1,12 @@
 import React from 'react';
-import {render} from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import io from 'socket.io-client';
-import reducer from './reducer';
-import remoteActionMiddleware from './remote-action-middleware';
-import serverActionHandler from './server-action-handler';
-import {setEntriesData} from './actions';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import storeConfigure from './store-configure';
+import { setEntriesData } from './actions/index';
 import App from './app';
 
-const socket = io(`${location.protocol}//${location.hostname}:8090`);
-const createStoreWithMiddleware = applyMiddleware(
-  remoteActionMiddleware(socket)
-)(createStore);
-
-const store = createStoreWithMiddleware(reducer);
+const store = storeConfigure();
 
 store.dispatch(setEntriesData({
   entries: []
@@ -27,4 +19,4 @@ render(
   document.getElementById('app')
 );
 
-serverActionHandler(socket, store);
+// serverActionHandler(store);

@@ -5,14 +5,14 @@ import {
 
 export const INITIAL_STATE = Map();
 
-export function setEntries(state, entries) {
-  return state.set('entries', List(entries));
+export function setEntries(state, payload) {
+  return state.set('entries', List(payload.entries));
 }
 
 function hasIncludeEntry(entry, filter) {
   let isInclude = true;
 
-  for (let char of filter.value) {
+  for (let char of filter) {
     if (entry.name.indexOf(char) === -1) {
       isInclude = false;
       break;
@@ -22,10 +22,13 @@ function hasIncludeEntry(entry, filter) {
   return isInclude;
 }
 
-export function getEntries(state, filter = {}, limit, offset = 0) {
+export function getEntries(state, { filter, limit, offset = 0 } = {}) {
   let entries = state.get('entries');
 
-  if (filter.value) {
+  offset = +offset;
+  limit = +limit;
+
+  if (filter) {
     entries = entries.filter((entry) => hasIncludeEntry(entry, filter));
   }
 
@@ -36,7 +39,6 @@ export function getEntries(state, filter = {}, limit, offset = 0) {
   }
 
   entries = entries.slice(offset, limit || entries.size);
-
   return {
     entries,
     offset,
